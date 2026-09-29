@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { @apply bg-cream font-body text-ink antialiased overflow-x-hidden; }
+h1, h2, h3 { @apply font-display; }
+:focus-visible { outline: 3px solid #6F5CC9; outline-offset: 3px; border-radius: 12px; }
+
+@layer components {
+  /* Claymorphism: soft outer shadow + white top-left highlight + inner depth */
+  .clay {
+    border-radius: 2rem;
+    box-shadow: 14px 14px 30px rgba(140,120,180,.22), -8px -8px 20px rgba(255,255,255,.95),
+      inset 6px 6px 12px rgba(255,255,255,.75), inset -6px -6px 14px rgba(150,130,190,.14);
+  }
+  .clay-sm { border-radius: 1.25rem;
+    box-shadow: 8px 8px 18px rgba(140,120,180,.2), -5px -5px 12px rgba(255,255,255,.95),
+      inset 3px 3px 7px rgba(255,255,255,.75), inset -3px -3px 8px rgba(150,130,190,.14); }
+  .clay-press:active { box-shadow: inset 6px 6px 12px rgba(150,130,190,.25), inset -4px -4px 10px rgba(255,255,255,.8); transform: scale(.98); }
+  .section { @apply mx-auto w-full max-w-6xl px-5 py-20 md:py-28 scroll-mt-16; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+}
